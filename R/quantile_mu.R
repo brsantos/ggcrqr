@@ -14,7 +14,6 @@
 #'  value is 2.
 #' formula
 #' @return A numeric value for quantile q, given the other parameters.
-#' @references
 #' @export
 
 quantile_mu <- function(q = 0.5, alpha = -1, lambda = 2, theta = 2){

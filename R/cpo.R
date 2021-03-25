@@ -1,15 +1,13 @@
-cpo <- function(Posterior, dados, J, q) {
-  #média do log do CPO
-
-  alpha  <- Posterior[, 1]
-  lambda   <- Posterior[, 2]
-  beta <- Posterior[, 3:(3 + J)]
+cpo <- function(posterior, data, J, q) {
+  alpha  <- posterior[, 1]
+  lambda   <- posterior[, 2]
+  beta <- posterior[, 3:(3 + J)]
   aux <- 0
-  for (i in 1:dim(dados)[1]) {
-    d <- dados$d[i]
-    t <- dados$t[i]
-    xe <- dados$x[i]
-    X <- model.matrix( ~ 1 + xe)
+  for (i in 1:dim(data)[1]) {
+    d <- data$d[i]
+    t <- data$t[i]
+    xe <- data$x[i]
+    X <- stats::model.matrix( ~ 1 + xe)
     x_beta <- do.call(rbind, lapply(apply(beta, 1, list), function(b) {
       tcrossprod(X, t(b[[1]]))
     }))
@@ -37,11 +35,11 @@ cpo <- function(Posterior, dados, J, q) {
           ) ^ (1 - d)
         )))
 
-    CPO <- (out / dim(Posterior)[1]) ^ (-1)
+    CPO <- (out / dim(posterior)[1]) ^ (-1)
 
     aux <- aux + log(CPO)
 
   }
-  B <- aux #/dim(dados)[1]
+  B <- aux
   return(B)
 }

@@ -11,7 +11,6 @@
 #'  value is 2.
 #' formula
 #' @return A
-#' @references
 #' @export
 
 p0_dGG <- function(alpha, lambda, theta) {

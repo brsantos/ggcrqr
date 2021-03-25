@@ -13,7 +13,6 @@
 #'  value is 2.
 #' formula
 #' @return A
-#' @references
 #' @export
 
 

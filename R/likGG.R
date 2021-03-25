@@ -13,7 +13,6 @@
 #' @param log if the log-likelihood is to be calculated or not. Default is
 #'  FALSE.
 #' @return the likelihood function value given the provided information.
-#' @references
 #' @export
 
 likGG <- function(par, q, data, J, log = FALSE) {
@@ -24,7 +23,7 @@ likGG <- function(par, q, data, J, log = FALSE) {
   cens <- data$d
   t <- data$t
   xe <- data$x
-  X <- model.matrix( ~ 1 + xe)
+  X <- stats::model.matrix( ~ 1 + xe)
   mu <- exp(tcrossprod(X, t(beta)))
   out <-
     sum(

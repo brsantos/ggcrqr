@@ -2,18 +2,19 @@
 #'
 #' This function returns the fit for a Bayesian regression model.
 #'
-#' @param par vector with dimension equal to the
-#' @param q quantile of interest.
 #' @param data data to be calculated the quantile of interest. It must have a
 #'  column with d value containing a censoring indicator, where 1 corresponds
 #'  to a non-censored observation and 0 otherwise. It must also contain a x
-#'  column with
+#'  column with all the regressors.
+#' @param q quantile of interest.
 #' @param J number of regressors in the model.
-#' @param log if the log-likelihood is to be calculated or not. Default is
-#'  FALSE.
+#' @param burn number of iterations to be considered as the burn-in.
+#' @param jump thinning number for the MCMC.
+#' @param guess initial values for the MCMC algorithm.
 #' @return the likelihood function value given the provided information.
-#' @references
 #' @export
+#' @import LaplacesDemon
+#' @import truncnorm
 
 bayesGG  <- function(data, J, q, burn, jump, guess) {
   n.size <- 1000

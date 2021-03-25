@@ -1,7 +1,7 @@
-outputs <- function(cadeia) {
-  out <- cbind(t(summary(cadeia)),
-               as.matrix(sd(cadeia)),
-               t(quantile(cadeia, probs = c(0.025, 0.975))),
-               t(emp.hpd(cadeia, conf = 0.95)))
+outputs <- function(chain) {
+  out <- cbind(t(summary(chain)),
+               as.matrix(stats::sd(chain)),
+               t(stats::quantile(chain, probs = c(0.025, 0.975))),
+               t(TeachingDemos::emp.hpd(chain, conf = 0.95)))
   return(out)
 }
