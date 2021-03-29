@@ -4,9 +4,14 @@
 \alias{bayesGG}
 \title{Generalized Gompertz distribution}
 \usage{
-bayesGG(data, J, q, burn, jump, guess)
+bayesGG(linear_pred, data, J, q, burn, jump, guess)
 }
 \arguments{
+\item{linear_pred}{the linear predictor formula to be included in the model,
+in the LHS one put the name of variable to considered as the response
+variable and in the RHS one puts the name of explanatory variables,
+where all variables are included in data.}
+
 \item{data}{data to be calculated the quantile of interest. It must have a
 column with d value containing a censoring indicator, where 1 corresponds
 to a non-censored observation and 0 otherwise. It must also contain a x

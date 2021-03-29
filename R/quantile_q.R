@@ -18,7 +18,7 @@
 
 quantile_q <- function(mu = 0.5, alpha = -1, lambda = 2, theta = 2){
 
-  check_parameters(mu = mu, alpha = alpha, lambda = lambda, theta = theta)
+  check_parameters(mu = mu, lambda = lambda, theta = theta)
 
   exp(theta *
         log(

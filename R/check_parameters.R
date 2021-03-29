@@ -1,11 +1,8 @@
-check_parameters <- function(q = NULL, alpha = NULL, lambda = NULL,
+check_parameters <- function(q = NULL, lambda = NULL,
                              theta = NULL, mu = NULL, y = NULL){
 
   if (any(lambda < 0))
     stop(paste("lambda must be positive", "\n", ""))
-
-  if (any(alpha < 0))
-    stop(paste("alpha must be positive", "\n", ""))
 
   if (any(theta < 0))
     stop(paste("mu must be positive", "\n", ""))

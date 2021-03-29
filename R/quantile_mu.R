@@ -18,7 +18,7 @@
 
 quantile_mu <- function(q = 0.5, alpha = -1, lambda = 2, theta = 2){
 
-  check_parameters(q, alpha, lambda, theta)
+  check_parameters(q, lambda, theta)
 
   (1/alpha) *
     (log(lambda - alpha * log(1 - q^(1/theta) * (1 - exp(lambda/alpha)))) -

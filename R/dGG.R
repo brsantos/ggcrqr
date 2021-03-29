@@ -15,7 +15,7 @@
 
 dGG <- function(y, alpha, lambda, mu, q, log = FALSE){
 
-  check_parameters(y = y, alpha = alpha, lambda = lambda,
+  check_parameters(y = y, lambda = lambda,
                    mu = mu, q = q)
 
   theta <-

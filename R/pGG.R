@@ -16,8 +16,7 @@
 
 pGG <- function(y, alpha, lambda, mu, q, lower.tail = TRUE, log.p = FALSE){
 
-  check_parameters(y = y, alpha = alpha, lambda = lambda,
-                   mu = mu, q = q)
+  check_parameters(y = y, lambda = lambda, mu = mu, q = q)
 
   theta <-
     -log(q) / (log(1 - exp(lambda / alpha)) - log(1 - exp(-(lambda / alpha) *

@@ -2,6 +2,10 @@
 #'
 #' This function returns the fit for a Bayesian regression model.
 #'
+#' @param linear_pred the linear predictor formula to be included in the model,
+#'  in the LHS one put the name of variable to considered as the response
+#'  variable and in the RHS one puts the name of explanatory variables,
+#'  where all variables are included in data.
 #' @param data data to be calculated the quantile of interest. It must have a
 #'  column with d value containing a censoring indicator, where 1 corresponds
 #'  to a non-censored observation and 0 otherwise. It must also contain a x
@@ -16,7 +20,7 @@
 #' @import LaplacesDemon
 #' @import truncnorm
 
-bayesGG  <- function(data, J, q, burn, jump, guess) {
+bayesGG  <- function(linear_pred, data, J, q, burn, jump, guess) {
   n.size <- 1000
   mon.names <- c("LP")
   parm.names <- LaplacesDemon::as.parm.names(list(
@@ -29,6 +33,7 @@ bayesGG  <- function(data, J, q, burn, jump, guess) {
   pos.beta <- grep("beta", parm.names)
 
   MyData <- list(
+    linear_pred = linear_pred,
     data = data,
     J = J,
     q = q,
@@ -76,6 +81,7 @@ bayesGG  <- function(data, J, q, burn, jump, guess) {
         par = c(alpha, lambda, beta),
         q = Data$q,
         data = Data$data,
+        linear_pred = Data$linear_pred,
         J = Data$J,
         log = Data$log
       )

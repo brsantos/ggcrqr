@@ -4,7 +4,7 @@
 \alias{likGG}
 \title{Generalized Gompertz distribution}
 \usage{
-likGG(par, q, data, J, log = FALSE)
+likGG(par, q, data, linear_pred, J, log = FALSE)
 }
 \arguments{
 \item{par}{vector with dimension equal to the}
@@ -15,6 +15,11 @@ likGG(par, q, data, J, log = FALSE)
 column with d value containing a censoring indicator, where 1 corresponds
 to a non-censored observation and 0 otherwise. It must also contain a x
 column with}
+
+\item{linear_pred}{the linear predictor formula to be included in the model,
+in the LHS one put the name of variable to considered as the response
+variable and in the RHS one puts the name of explanatory variables,
+where all variables are included in data.}
 
 \item{J}{number of regressors in the model.}
 

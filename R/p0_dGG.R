@@ -14,7 +14,7 @@
 #' @export
 
 p0_dGG <- function(alpha, lambda, theta) {
-  check_parameters(alpha = alpha, lambda = lambda, theta = theta)
+  check_parameters(lambda = lambda, theta = theta)
 
   1 - (1 - exp(lambda / alpha)) ^ theta
 }
