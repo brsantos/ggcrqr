@@ -22,7 +22,7 @@ devtools::install_github("brsantos/ggcrqr")
 ## Example
 
 This is a basic example which shows you how to estimate the model
-considering available in the package: `m_breast_cancer`.
+considering the data available in the package: `m_breast_cancer`.
 
 ``` r
 library(ggcrqr)
@@ -35,15 +35,15 @@ model <- bayesGG(time_to_d ~ age_group + stage_c,
                  q = 0.5, d = "cens", burn = 30000, jump = 40, 
                  guess = c(-0.1, 0.5, rep(0, 6)))
 #> 
-#> Laplace's Demon was called on Tue Mar 30 09:38:03 2021
+#> Laplace's Demon was called on Tue Mar 30 10:02:59 2021
 #> 
 #> Performing initial checks...
 #> Algorithm: Adaptive Metropolis 
 #> 
 #> Laplace's Demon is beginning to update...
-#> Iteration: 20000,   Proposal: Multivariate,   LP: -716
-#> Iteration: 40000,   Proposal: Multivariate,   LP: -716.5
-#> Iteration: 60000,   Proposal: Multivariate,   LP: -716
+#> Iteration: 20000,   Proposal: Multivariate,   LP: -715
+#> Iteration: 40000,   Proposal: Multivariate,   LP: -718
+#> Iteration: 60000,   Proposal: Multivariate,   LP: -716.5
 #> 
 #> Assessing Stationarity
 #> Assessing Thinning and ESS
