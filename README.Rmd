@@ -22,13 +22,7 @@ The goal of ggcrqr is to ...
 
 ## Installation
 
-You can install the released version of ggcrqr from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("ggcrqr")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -36,10 +30,15 @@ devtools::install_github("brsantos/ggcrqr")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to estimate the model considering the data available in the package: `m_breast_cancer`.
 
-```{r example}
+```{r example, warning = FALSE}
 library(ggcrqr)
 ## basic example code
+## one should check whether the values for burn and jump are adequate.
+model <- bayesGG(time_to_d ~ age_group + stage_c, 
+                 data = m_breast_cancer, 
+                 q = 0.5, d = "cens", burn = 30000, jump = 40, 
+                 guess = c(-0.1, 0.5, rep(0, 6)))
 ```
 

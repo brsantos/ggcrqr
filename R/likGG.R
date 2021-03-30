@@ -14,24 +14,22 @@
 #'  variable and in the RHS one puts the name of explanatory variables,
 #'  where all variables are included in data.
 #' @param J number of regressors in the model.
+#' @param d name of variable containing the censoring indicator in data.
 #' @param log if the log-likelihood is to be calculated or not. Default is
 #'  FALSE.
 #' @return the likelihood function value given the provided information.
 #' @export
 
-likGG <- function(par, q, data, linear_pred, J, log = FALSE) {
+likGG <- function(par, q, data, linear_pred, J, d, log = FALSE) {
   alpha <- par[1]
   lambda <- par[2]
   beta <- par[3:(3 + J)]
 
-  cens <- data$d
-  # t <- data$t
-  # xe <- as.matrix(data[,4:(4+J-1)])
+  cens <- get(d, data)
   t <- as.numeric(
     stats::model.extract(stats::model.frame(linear_pred, data), 'response')
   )
   X <- stats::model.matrix(linear_pred, data)
-  # X <- stats::model.matrix( ~ 1 + xe)
   mu <- exp(tcrossprod(X, t(beta)))
   out <-
     sum(

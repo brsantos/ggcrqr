@@ -6,12 +6,9 @@
 #'  in the LHS one put the name of variable to considered as the response
 #'  variable and in the RHS one puts the name of explanatory variables,
 #'  where all variables are included in data.
-#' @param data data to be calculated the quantile of interest. It must have a
-#'  column with d value containing a censoring indicator, where 1 corresponds
-#'  to a non-censored observation and 0 otherwise. It must also contain a x
-#'  column with all the regressors.
+#' @param data data to be calculated the quantile of interest.
 #' @param q quantile of interest.
-#' @param J number of regressors in the model.
+#' @param d name of variable containing the censoring indicator in data.
 #' @param burn number of iterations to be considered as the burn-in.
 #' @param jump thinning number for the MCMC.
 #' @param guess initial values for the MCMC algorithm.
@@ -20,9 +17,10 @@
 #' @import LaplacesDemon
 #' @import truncnorm
 
-bayesGG  <- function(linear_pred, data, J, q, burn, jump, guess) {
+bayesGG  <- function(linear_pred, data, q, d, burn, jump, guess) {
   n.size <- 1000
   mon.names <- c("LP")
+  J <- dim(stats::model.matrix(linear_pred, data))[2] - 1
   parm.names <- LaplacesDemon::as.parm.names(list(
     alpha = 0,
     lambda = 0,
@@ -37,6 +35,7 @@ bayesGG  <- function(linear_pred, data, J, q, burn, jump, guess) {
     data = data,
     J = J,
     q = q,
+    d = d,
     log = TRUE,
     mon.names = mon.names,
     parm.names = parm.names,
@@ -80,6 +79,7 @@ bayesGG  <- function(linear_pred, data, J, q, burn, jump, guess) {
       likGG(
         par = c(alpha, lambda, beta),
         q = Data$q,
+        d = Data$d,
         data = Data$data,
         linear_pred = Data$linear_pred,
         J = Data$J,
@@ -108,7 +108,9 @@ bayesGG  <- function(linear_pred, data, J, q, burn, jump, guess) {
     Status = 20000,
     Thinning = jump,
     Algorithm = "AM",
-    Specs = list(Adaptive = 500, Periodicity = 100)
+    Specs = list(Adaptive = 500, Periodicity = 100),
+    Debug=list(DB.chol = FALSE, DB.eigen = FALSE,
+               DB.MCSE = FALSE, DB.Model = FALSE)
   )
 
 

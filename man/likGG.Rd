@@ -4,7 +4,7 @@
 \alias{likGG}
 \title{Generalized Gompertz distribution}
 \usage{
-likGG(par, q, data, linear_pred, J, log = FALSE)
+likGG(par, q, data, linear_pred, J, d, log = FALSE)
 }
 \arguments{
 \item{par}{vector with dimension equal to the}
@@ -22,6 +22,8 @@ variable and in the RHS one puts the name of explanatory variables,
 where all variables are included in data.}
 
 \item{J}{number of regressors in the model.}
+
+\item{d}{name of variable containing the censoring indicator in data.}
 
 \item{log}{if the log-likelihood is to be calculated or not. Default is
 FALSE.}
