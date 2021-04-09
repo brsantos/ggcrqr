@@ -129,7 +129,8 @@ bayesGG  <- function(linear_pred, data, q, d, burn, jump, guess) {
       "AR" = AR,
       "DIC" = DIC,
       "rec_burnin" = burn_rec,
-      "rec_jump" = jump_rec
+      "rec_jump" = jump_rec,
+      "tau" = q
     )
   return(output)
 }
