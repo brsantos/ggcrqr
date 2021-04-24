@@ -4,7 +4,7 @@
 \alias{bayesGG}
 \title{Generalized Gompertz distribution}
 \usage{
-bayesGG(linear_pred, data, q, d, burn, jump, guess)
+bayesGG(linear_pred, data, q, d, iter, burn, jump, guess)
 }
 \arguments{
 \item{linear_pred}{the linear predictor formula to be included in the model,
@@ -17,6 +17,8 @@ where all variables are included in data.}
 \item{q}{quantile of interest.}
 
 \item{d}{name of variable containing the censoring indicator in data.}
+
+\item{iter}{number of posterior samples}
 
 \item{burn}{number of iterations to be considered as the burn-in.}
 
