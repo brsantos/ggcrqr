@@ -9,7 +9,7 @@
 #' @param data data to be calculated the quantile of interest.
 #' @param q quantile of interest.
 #' @param d name of variable containing the censoring indicator in data.
-#' @param iter number of posterior samples
+#' @param iter number of posterior samples. Default value is 1000.
 #' @param burn number of iterations to be considered as the burn-in.
 #' @param jump thinning number for the MCMC.
 #' @param guess initial values for the MCMC algorithm.
@@ -18,7 +18,7 @@
 #' @import LaplacesDemon
 #' @import truncnorm
 
-bayesGG  <- function(linear_pred, data, q, d, iter, burn, jump, guess) {
+bayesGG  <- function(linear_pred, data, q, d, iter = 1000, burn, jump, guess) {
   mon.names <- c("LP")
   J <- dim(stats::model.matrix(linear_pred, data))[2] - 1
   parm.names <- LaplacesDemon::as.parm.names(list(
