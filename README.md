@@ -4,10 +4,9 @@
 # ggcrqr
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
-The goal of ggcrqr is to provide `R` routines for estimation of Generalized Gompertz Cure Rate Quantile Regression models. 
+The goal of ggcrqr is to provide `R` routines for estimation of Generalized Gompertz Cure Rate Quantile Regression models.
 
 ## Installation
 
@@ -31,19 +30,21 @@ library(ggcrqr)
 ## basic example code
 ## one should check whether the values for burn and jump are adequate.
 model <- bayesGG(time_to_d ~ age_group + stage_c, 
+                 ~ 1, 
+                 ~ 1,
                  data = m_breast_cancer, 
-                 q = 0.5, d = "cens", iter = 2000,  burn = 30000, jump = 40, 
+                 q = 0.5, d = "cens", burn = 30000, jump = 40, 
                  guess = c(-0.1, 0.5, rep(0, 6)))
 #> 
-#> Laplace's Demon was called on Tue Mar 30 10:02:59 2021
+#> Laplace's Demon was called on Wed Oct 19 18:03:46 2022
 #> 
 #> Performing initial checks...
 #> Algorithm: Adaptive Metropolis 
 #> 
 #> Laplace's Demon is beginning to update...
-#> Iteration: 20000,   Proposal: Multivariate,   LP: -715
-#> Iteration: 40000,   Proposal: Multivariate,   LP: -718
-#> Iteration: 60000,   Proposal: Multivariate,   LP: -716.5
+#> Iteration: 20000,   Proposal: Multivariate,   LP: -715.7
+#> Iteration: 40000,   Proposal: Multivariate,   LP: -716.2
+#> Iteration: 60000,   Proposal: Multivariate,   LP: -718.7
 #> 
 #> Assessing Stationarity
 #> Assessing Thinning and ESS
