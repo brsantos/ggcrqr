@@ -4,13 +4,30 @@
 \alias{bayesGG}
 \title{Generalized Gompertz distribution}
 \usage{
-bayesGG(linear_pred, data, q, d, iter = 1000, burn, jump, guess)
+bayesGG(
+  linear_pred_mu,
+  linear_pred_alpha,
+  linear_pred_lambda,
+  data,
+  q,
+  d,
+  iter = 1000,
+  burn,
+  jump,
+  guess
+)
 }
 \arguments{
-\item{linear_pred}{the linear predictor formula to be included in the model,
-in the LHS one put the name of variable to considered as the response
-variable and in the RHS one puts the name of explanatory variables,
-where all variables are included in data.}
+\item{linear_pred_mu}{the linear predictor formula to be included in the 
+model for the conditional quantiles; in the LHS one put the name of 
+variable to considered as the response variable and in the RHS one puts the
+name of explanatory variables, where all variables are included in data.}
+
+\item{linear_pred_alpha}{the formula for the linear predictor of alpha. 
+There is no need to put the LHs of the formula}
+
+\item{linear_pred_lambda}{the formula for the linear predictor of alpha. 
+There is no need to put the LHs of the formula}
 
 \item{data}{data to be calculated the quantile of interest.}
 

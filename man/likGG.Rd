@@ -4,7 +4,16 @@
 \alias{likGG}
 \title{Generalized Gompertz distribution}
 \usage{
-likGG(par, q, data, linear_pred, J, d, log = FALSE)
+likGG(
+  par,
+  q,
+  data,
+  linear_pred_mu,
+  linear_pred_alpha,
+  linear_pred_lambda,
+  d,
+  log = FALSE
+)
 }
 \arguments{
 \item{par}{vector with dimension equal to the}
@@ -16,12 +25,16 @@ column with d value containing a censoring indicator, where 1 corresponds
 to a non-censored observation and 0 otherwise. It must also contain a x
 column with}
 
-\item{linear_pred}{the linear predictor formula to be included in the model,
-in the LHS one put the name of variable to considered as the response
-variable and in the RHS one puts the name of explanatory variables,
-where all variables are included in data.}
+\item{linear_pred_mu}{the linear predictor formula to be included in the 
+model for the conditional quantiles; in the LHS one put the name of 
+variable to considered as the response variable and in the RHS one puts the
+name of explanatory variables, where all variables are included in data.}
 
-\item{J}{number of regressors in the model.}
+\item{linear_pred_alpha}{the formula for the linear predictor of alpha. 
+There is no need to put the LHs of the formula}
+
+\item{linear_pred_lambda}{the formula for the linear predictor of alpha. 
+There is no need to put the LHs of the formula}
 
 \item{d}{name of variable containing the censoring indicator in data.}
 
