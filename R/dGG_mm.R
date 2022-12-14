@@ -6,7 +6,7 @@
 #' @param y the value for which one intends to calculate the density function.
 #' @param alpha scale parameter. It must be greater than zero.
 #' @param lambda scale parameter. It must be greater than zero.
-#' @param mu location parameter
+#' @param theta scale parameter. It must be greater than zero. 
 #' @param q quantile of interest.
 #' @param log if the log density is to be calculated or not. Default is
 #'  FALSE.
@@ -14,7 +14,11 @@
 #'  mu and q.
 #' @export
 
-dGG_mm <- function(y, alpha, lambda, mu, q, log = FALSE){
+dGG_mm <- function(y,
+                   alpha,
+                   lambda,
+                   theta, 
+                   log = FALSE){
   
   logfy  <-
     log(theta) + log(lambda) + (theta - 1) * 

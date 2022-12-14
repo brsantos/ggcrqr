@@ -4,7 +4,7 @@
 \alias{dGG_mm}
 \title{Generalized Gompertz distribution}
 \usage{
-dGG_mm(y, alpha, lambda, mu, q, log = FALSE)
+dGG_mm(y, alpha, lambda, theta, log = FALSE)
 }
 \arguments{
 \item{y}{the value for which one intends to calculate the density function.}
@@ -13,12 +13,12 @@ dGG_mm(y, alpha, lambda, mu, q, log = FALSE)
 
 \item{lambda}{scale parameter. It must be greater than zero.}
 
-\item{mu}{location parameter}
-
-\item{q}{quantile of interest.}
+\item{theta}{scale parameter. It must be greater than zero.}
 
 \item{log}{if the log density is to be calculated or not. Default is
 FALSE.}
+
+\item{q}{quantile of interest.}
 }
 \value{
 The density value for given y, the parameters alpha, lambda and 
