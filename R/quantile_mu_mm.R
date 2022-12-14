@@ -2,7 +2,7 @@
 #'
 #' This function returns the quantile function for the Generalized Gompertz
 #'  distribution given the quantile q, the parameters alpha, lambda and
-#'  theta.
+#'  theta, considering a mixture model
 #'
 #' @param q the value for the quantile to be used in the calculation of the
 #'  mu parameter. It must be between 0 and 1 and the default value is 0.5.
@@ -16,14 +16,10 @@
 #' @return A numeric value for quantile q, given the other parameters.
 #' @export
 
-quantile_mu <- function(q = 0.5, 
-                        alpha = -1, 
-                        lambda = 2, 
-                        theta = 2){
+quantile_mu_mm <- function(q = 0.5, 
+                           alpha = 0.5, 
+                           lambda = 2, 
+                           theta = 2){
 
-  check_parameters(q, lambda, theta)
-
-  (1/alpha) *
-    (log(lambda - alpha * log(1 - q^(1/theta) * (1 - exp(lambda/alpha)))) -
-        log(lambda))
+  (1 / alpha) * (log(1 - (alpha / lambda) * log(1 - q ^ (1 / theta))))
 }

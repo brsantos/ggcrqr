@@ -1,7 +1,7 @@
 #' Generalized Gompertz distribution
 #'
 #' This function returns the density function value given y, the parameters
-#'  alpha, lambda and mu and q.
+#'  alpha, lambda and mu and q, considering a mixture model.
 #'
 #' @param y the value for which one intends to calculate the density function.
 #' @param alpha scale parameter. It must be greater than zero.
@@ -14,25 +14,17 @@
 #'  mu and q.
 #' @export
 
-dGG <- function(y, alpha, lambda, mu, q, log = FALSE){
-
-  check_parameters(y = y, lambda = lambda,
-                   mu = mu, q = q)
-
-  theta <-
-    -log(q) / (log(1 - exp(lambda / alpha)) - log(1 - exp(-(lambda / alpha) *
-                                                            (exp(
-                                                              alpha * mu
-                                                            ) - 1))))
-
-  logfy <- log(theta) + log(lambda) + (theta - 1) *
-    log(1 - exp(-lambda * (exp(alpha * y) - 1) / alpha)) -
+dGG_mm <- function(y, alpha, lambda, mu, q, log = FALSE){
+  
+  logfy  <-
+    log(theta) + log(lambda) + (theta - 1) * 
+    log(1 - exp(-lambda * (exp(alpha * y) - 1) / alpha)) - 
     (-alpha ^ 2 * y + lambda * exp(alpha * y) - lambda) / alpha
-
-  if (log == FALSE)
-    fy = exp(logfy)
+  
+  if (!log)
+    fy <- exp(logfy)
   else
-    fy = logfy
+    fy <- logfy
   fy
 }
 
