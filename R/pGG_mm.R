@@ -14,7 +14,12 @@
 #' @return A
 #' @export
 
-pGG <- function(y, alpha, lambda, mu, q, lower.tail = TRUE, log.p = FALSE){
+pGG_mm <- function(y,
+                   alpha,
+                   lambda,
+                   theta, 
+                   lower.tail = TRUE,
+                   log.p = FALSE){
   
   cdf   <-
     (1 - exp(-lambda * (exp(alpha * y) - 1) / alpha)) ^ theta
