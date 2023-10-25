@@ -11,7 +11,7 @@
 #' @param lower.tail if TRUE returns the lower tail of the cdf function.
 #'  Otherwise, returns the probability of being greater than y.
 #' @param log.p if TRUE returns the log of the cdf. Default if FALSE.
-#' @return A
+#' @return The cdf for given y, for parameters alpha, lambda and mu and q.
 #' @export
 
 pGG <- function(y, alpha, lambda, mu, q, lower.tail = TRUE, log.p = FALSE){
